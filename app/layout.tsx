@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { useEffect, useState } from "react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -15,7 +14,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "🎅 TWM Secret Santa 2024 ",
+  title: "TWM Secret Santa 2024 ",
   description: "A Secret Santa app for the TWM Committee Team 2024",
 };
 
