@@ -30,7 +30,8 @@ export async function DELETE(
 
 		return NextResponse.json(user)
 	}
-	catch (error) {
+	catch (err) {
+		console.error('Error deleting user:', err)
 		return NextResponse.json({ error: 'Failed to delete user' }, { status: 500 })
 	}
 }
@@ -48,7 +49,8 @@ export async function GET(
 		}).receiver()
 		return NextResponse.json(secretSanta)
 	}
-	catch (error) {
+	catch (err) {
+		console.error('Error fetching user:', err)
 		return NextResponse.json({ error: 'Failed to fetch user' }, { status: 500 })
 	}
 }
@@ -88,7 +90,8 @@ export async function POST(
 
 		return NextResponse.json({ message: "Email sent successfully" }, { status: 200 });
 	}
-	catch (error) {
+	catch (err) {
+		console.error('Error sending email:', err)
 		return NextResponse.json({ error: 'Error sending email' }, { status: 500 })
 	}
 }

@@ -82,6 +82,7 @@ export default function Home() {
     e.preventDefault();
     if (newName && newEmail && !users.some((user) => user.email === newEmail)) {
       try {
+        setLoading(true);
         const response = await fetch("/api", {
           method: "POST",
           headers: {
@@ -98,6 +99,9 @@ export default function Home() {
         }
       } catch (error) {
         console.error("Failed to add participant:", error);
+      }
+      finally {
+        setLoading(false);
       }
     }
   };
