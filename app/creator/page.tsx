@@ -120,6 +120,7 @@ export default function Home() {
     }));
 
     try {
+      setLoading(true);
       const response = await fetch("/api", {
         method: "PUT",
         headers: {
@@ -134,6 +135,9 @@ export default function Home() {
       }
     } catch (error) {
       console.error("Failed to save assignments:", error);
+    }
+    finally {
+      setLoading(false);
     }
   };
 
@@ -150,7 +154,7 @@ export default function Home() {
             transform: translateY(-10vh);
           }
           100% {
-            transform: translateY(100vh);
+            transform: translateY(200vh);
           }
         }
         .snowflake {
@@ -224,10 +228,8 @@ export default function Home() {
           {assignments.length > 0 && (
             <div>
               <Alert variant="default">
-              <AlertTitle className="text-2xl font-semibold mb-2 flex justify-center items-center text-primary">
-                <PartyPopper />
-                  Generate completed
-                <PartyPopper />
+              <AlertTitle className="text-xl font-semibold mb-2 flex justify-center items-center text-primary">
+                <PartyPopper className="mx-2"/>Generate completed
               </AlertTitle>
               </Alert>
               {/* <h2 className="text-xl font-semibold mb-2">Secret Santa Assignments:</h2>

@@ -1,7 +1,5 @@
-import { PrismaClient } from '@prisma/client'
+import prisma from '@/lib/db'
 import { NextResponse } from 'next/server'
-
-const prisma = new PrismaClient()
 
 export async function GET() {
   try {
@@ -32,10 +30,16 @@ export async function POST(request: Request) {
 export async function PUT(request: Request) {
   try {
     const assignments = await request.json()
-    
+
     // Clear existing assignments
     await prisma.secretSanta.deleteMany()
-    
+
+    await prisma.user.updateMany({
+      data: {
+        isSent: false
+      }
+    })
+
     // Create new assignments
     const created = await Promise.all(
       assignments.map((assignment: { giverId: number, receiverId: number }) =>
@@ -51,11 +55,7 @@ export async function PUT(request: Request) {
         })
       )
     )
-    await prisma.user.updateMany({
-      data: {
-        isSent: false
-      }
-    })    
+
     return NextResponse.json(created)
   } catch (err) {
     console.error('Error creating assignments:', err)

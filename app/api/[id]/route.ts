@@ -1,9 +1,6 @@
+import prisma from '@/lib/db'
 import { sendEmail } from '@/lib/mailer'
-import { PrismaClient } from '@prisma/client'
 import { NextRequest, NextResponse } from 'next/server'
-
-// Initialize Prisma
-const prisma = new PrismaClient()
 
 // Context with params type matching Next.js expectations
 export interface Context {
