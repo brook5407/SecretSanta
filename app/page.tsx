@@ -75,6 +75,9 @@ export default function Home() {
         const data = await response.json();
         console.log(data);
         setSuccess("Please check your email for to know your match!");
+      } else {
+        const error = await response.json();
+        setError(`Failed to send email: ${error.error}`);
       }
     } catch (error) {
       setError("Failed to find participant:" + error);
@@ -115,7 +118,10 @@ export default function Home() {
         <CardContent>
           <div className="space-y-4">
             <div className="flex flex-col space-y-2">
-              <Select disabled={loading} onValueChange={(value) => setId(value)}>
+              <Select
+                disabled={loading}
+                onValueChange={(value) => setId(value)}
+              >
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select your name" />
                 </SelectTrigger>
@@ -127,7 +133,11 @@ export default function Home() {
                   ))}
                 </SelectContent>
               </Select>
-              <Button disabled={loading} onClick={() => checkAssignment(id)} className="w-full">
+              <Button
+                disabled={loading}
+                onClick={() => checkAssignment(id)}
+                className="w-full"
+              >
                 <span className={loading ? "text-transparent" : ""}>
                   Check my assignment
                 </span>
@@ -141,8 +151,8 @@ export default function Home() {
 
             {error && (
               <Alert variant="destructive">
-                <AlertTitle>Error</AlertTitle>
-                <AlertDescription>{error}</AlertDescription>
+                <AlertTitle className="font-bold text-primary text-center">Error</AlertTitle>
+                <AlertDescription className="text-center">{error}</AlertDescription>
               </Alert>
             )}
 

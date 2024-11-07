@@ -80,7 +80,9 @@ export async function POST(
     if (!user || !secretSanta?.receiver) {
       return NextResponse.json({ error: 'User or receiver not found' }, { status: 404 })
     }
-
+    if (user.isSent) {
+      return NextResponse.json({ error: 'Email already sent' }, { status: 400 })
+    }
     await sendEmail(user.name, user.email, secretSanta.receiver.name)
 
     await prisma.user.update({
