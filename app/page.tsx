@@ -151,7 +151,7 @@ export default function Home() {
 
             {error && (
               <Alert variant="destructive">
-                <AlertTitle className="font-bold text-primary text-center">Error</AlertTitle>
+                <AlertTitle className="font-bold text-center">Error</AlertTitle>
                 <AlertDescription className="text-center">{error}</AlertDescription>
               </Alert>
             )}
