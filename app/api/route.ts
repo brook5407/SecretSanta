@@ -51,7 +51,11 @@ export async function PUT(request: Request) {
         })
       )
     )
-    
+    await prisma.user.updateMany({
+      data: {
+        isSent: false
+      }
+    })    
     return NextResponse.json(created)
   } catch (err) {
     console.error('Error creating assignments:', err)

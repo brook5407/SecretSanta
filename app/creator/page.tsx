@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PartyPopper, Trash2 } from "lucide-react";
 import { LoaderCircle } from "lucide-react";
+import { Alert, AlertTitle } from "@/components/ui/alert";
 
 interface User {
   id: number;
@@ -222,11 +223,13 @@ export default function Home() {
 
           {assignments.length > 0 && (
             <div>
-              <h2 className="text-2xl font-semibold mb-2 flex justify-center items-center">
+              <Alert variant="default">
+              <AlertTitle className="text-2xl font-semibold mb-2 flex justify-center items-center text-primary">
                 <PartyPopper />
-                Generate completed
+                  Generate completed
                 <PartyPopper />
-              </h2>
+              </AlertTitle>
+              </Alert>
               {/* <h2 className="text-xl font-semibold mb-2">Secret Santa Assignments:</h2>
               <ul className="space-y-2">
                 {assignments.map((assignment, index) => (

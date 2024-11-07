@@ -48,8 +48,8 @@ export default function Home() {
       setSnowflakes(newSnowflakes);
     };
 
-    createSnowflakes();
     fetchUsers();
+    createSnowflakes();
   }, []);
 
   const fetchUsers = async () => {
@@ -115,7 +115,7 @@ export default function Home() {
         <CardContent>
           <div className="space-y-4">
             <div className="flex flex-col space-y-2">
-              <Select onValueChange={(value) => setId(value)}>
+              <Select disabled={loading} onValueChange={(value) => setId(value)}>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select your name" />
                 </SelectTrigger>
@@ -127,7 +127,7 @@ export default function Home() {
                   ))}
                 </SelectContent>
               </Select>
-              <Button onClick={() => checkAssignment(id)} className="w-full">
+              <Button disabled={loading} onClick={() => checkAssignment(id)} className="w-full">
                 <span className={loading ? "text-transparent" : ""}>
                   Check my assignment
                 </span>
