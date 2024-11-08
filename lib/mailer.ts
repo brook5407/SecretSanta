@@ -38,6 +38,8 @@ export const sendEmail = async (
         <p>If you have any questions or need more details, feel free to reach out to us. Thanks for being a part of the fun, and happy gifting!</p>
         
         <p>Best wishes,<br><strong>TWM Commitee Team 2024 🎅</strong></p>
+
+        <p>This is an auto-generated email. Please do not reply to this message.</p>
       `,
     }); 
 }
