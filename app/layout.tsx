@@ -14,8 +14,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "TWM Secret Santa 2024 ",
-  description: "A Secret Santa app for the TWM Committee Team 2024",
+  title: "Secret Santa",
+  description: "Make your holiday gift exchanges fun and stress-free! Our Secret Santa app handles everything from participant sign-up to anonymous gift pairing, ensuring a smooth and delightful experience.",
 };
 
 export default function RootLayout({
